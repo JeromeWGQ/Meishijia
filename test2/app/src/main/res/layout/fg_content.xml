@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/bg_white">
+
+
+    <Button
+        android:drawableTop="@mipmap/login_head"
+        android:text="点击头像登录"
+        android:id="@+id/button_my_login"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:elevation="0dp"
+        android:onClick="onClickLogin" />
+
+    <TextView
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView"
+        android:text="登录后可查看已上传菜谱、修改个人信息、使用上传、收藏菜谱功能"
+        android:layout_below="@+id/button_my_login"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="19dp" />
+
+    <Button
+        android:text="我已登录"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView"
+        android:layout_alignRight="@+id/textView"
+        android:layout_alignEnd="@+id/textView"
+        android:layout_marginRight="22dp"
+        android:layout_marginEnd="22dp"
+        android:layout_marginTop="82dp"
+        android:id="@+id/logined_button"
+        android:onClick="onClickLogined" />
+</RelativeLayout>

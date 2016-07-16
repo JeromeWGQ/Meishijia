@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#F4F0F4">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <LinearLayout
+                android:id="@+id/title_linearlayout"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="1"
+                android:color="@color/bg_topbar">
+                <ImageView
+                    android:id="@+id/mainactivity_title_search_img"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    android:layout_marginTop="5dp"
+                    android:layout_marginLeft="5dp"
+                    android:background="@mipmap/ic_action_search" />
+                <EditText
+                    android:id="@+id/mainactivity_title_edit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    android:layout_marginLeft="5dp"
+                    android:background="#00000000"
+                    android:hint="搜索菜名、菜谱、用户、店家"
+                    android:paddingLeft="30dp"
+                    android:textColor="#323232"
+                    android:textSize="15sp"
+
+                    android:layout_alignParentTop="true" />
+                <Button
+                    android:id="@+id/search_button"
+                    android:layout_width="78dp"
+                    android:layout_height="wrap_content"
+
+                    android:background="#00000000"
+                    android:text="搜索"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignRight="@+id/mainactivity_title_edit"
+                    android:layout_gravity="right|top" />
+
+            </LinearLayout>
+
+            <FrameLayout
+                android:id="@+id/image_frame"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                android:layout_below="@id/title_linearlayout"
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal">
+                    <!--android:layout_marginTop="130dp">-->
+                    <android.support.v4.view.ViewPager
+                        android:id="@+id/viewPager"
+                        android:layout_width="match_parent"
+                        android:layout_height="160dp"
+                        android:layout_gravity="center|top">
+                    </android.support.v4.view.ViewPager>
+                    <ImageView
+                        android:id="@+id/viewpager_0"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:clickable="true"
+                        android:src="@drawable/viewpager_dot"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="135dp"
+                        android:background="#00000000"/>
+                    <ImageView
+                        android:id="@+id/viewpager_1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_toRightOf="@id/viewpager_0"
+                        android:layout_marginBottom="10dp"
+                        android:layout_marginTop="135dp"
+                        android:clickable="true"
+                        android:src="@drawable/viewpager_dot" />
+                    <ImageView
+                        android:id="@+id/viewpager_2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_toRightOf="@id/viewpager_1"
+                        android:layout_marginBottom="10dp"
+                        android:layout_marginTop="135dp"
+                        android:clickable="true"
+                        android:src="@drawable/viewpager_dot"/>
+                </RelativeLayout>
+
+            </FrameLayout>
+
+            <TextView
+                android:id="@+id/you_like_Texeview"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_below="@id/image_frame"
+                android:layout_marginTop="10dp"
+                android:background="@color/bg_white"
+                android:gravity="center_vertical"
+                android:paddingLeft="10dp"
+                android:text=" 猜你喜欢"
+                android:textColor="@color/text_yellow"
+
+                android:textSize="15sp" />
+            android:textColor="#745855"
+            <View
+                android:id="@+id/div_tab_bar1"
+                android:layout_width="match_parent"
+                android:layout_height="2px"
+                android:background="@color/div_white"
+                />
+
+            <ListView
+
+                android:id="@+id/you_like_listview"
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:layout_below="@id/div_tab_bar1"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:divider="#F4F0F4"
+                android:dividerHeight="8dp"
+                android:background="@color/bg_white">
+                android:onClick="onOneMenuClicked"
+            </ListView>
+
+            <TextView
+                android:id="@+id/around_listview"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_below="@id/you_like_listview"
+                android:layout_marginTop="10dp"
+                android:background="@color/bg_white"
+                android:gravity="center_vertical"
+                android:paddingLeft="10dp"
+                android:text="周边转转"
+                android:textColor="@color/text_yellow"
+
+                android:textSize="15sp" />
+            <View
+                android:id="@+id/div_tab_bar2"
+                android:layout_width="match_parent"
+                android:layout_height="2px"
+                android:background="@color/div_white"
+                />
+        </LinearLayout>
+
+    </ScrollView>
+
+
+</RelativeLayout>
