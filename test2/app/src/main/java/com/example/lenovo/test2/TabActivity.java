@@ -4,6 +4,7 @@ import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.content.Intent;
+import android.net.Uri;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -24,7 +25,7 @@ import com.google.gson.reflect.TypeToken;
 import java.util.ArrayList;
 import java.util.List;
 
-public class TabActivity extends FragmentActivity{
+public class TabActivity extends FragmentActivity implements QuanFragment.OnFragmentInteractionListener{
 
     private TextView txt_topbar;
     private TextView txt_channel;
@@ -45,6 +46,10 @@ public class TabActivity extends FragmentActivity{
     private Fragment fg3;
     private firstFragment fgfirst;
     private FragmentManager fManager;
+
+    public void OnFragmentInteractionListener(){
+
+    }
 
     public void onClickLogin(View v){
         Log.v("TabActivity","点击啦");
@@ -299,4 +304,8 @@ public class TabActivity extends FragmentActivity{
         }
     }
 
+    @Override
+    public void onFragmentInteraction(Uri uri) {
+
+    }
 }
