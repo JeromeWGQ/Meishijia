@@ -7,6 +7,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
 
+import com.example.lenovo.test2.personalInf.ModifyInfAcvivity;
+
 public class MyLoginedActivity extends AppCompatActivity {
 
     @Override
@@ -25,4 +27,10 @@ public class MyLoginedActivity extends AppCompatActivity {
         Intent intent = new Intent(this, SettingsActivity.class);
         startActivity(intent);
     }
+
+    public void modifyClicked(View v){
+        Intent intent = new Intent(this, ModifyInfAcvivity.class);
+        startActivity(intent);
+    }
+
 }

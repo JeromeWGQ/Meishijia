@@ -264,7 +264,7 @@ public class TabActivity extends FragmentActivity implements QuanFragment.OnFrag
     }
 
     private void bindViews(){
-//        txt_topbar = (TextView) findViewById(R.id.viewPager);
+
         txt_channel = (TextView) findViewById(R.id.txt_channel);
         txt_message = (TextView) findViewById(R.id.txt_message);
         txt_better = (TextView) findViewById(R.id.txt_better);

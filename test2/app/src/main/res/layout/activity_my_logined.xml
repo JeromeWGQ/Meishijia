@@ -49,29 +49,28 @@
         android:layout_height="wrap_content"
         android:id="@+id/button_upload"
         android:background="@mipmap/upload"
-        android:layout_marginTop="53dp"
+        android:layout_marginTop="57dp"
+        android:onClick="uploadClicked"
         android:layout_below="@+id/imageView2"
-        android:layout_alignLeft="@+id/imageView2"
-        android:layout_alignStart="@+id/imageView2"
-        android:onClick="uploadClicked" />
-
-    <Button
-        android:text="我的菜谱"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/button_mymenu"
-        android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_alignStart="@+id/imageView2" />
 
     <Button
         android:text="我的收藏"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/button_mystar"
-        android:layout_marginTop="31dp"
+        android:layout_marginTop="20dp"
         android:layout_below="@+id/button_mymenu"
-        android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
+
+    <Button
+        android:text="我的菜谱"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/button_mymenu"
+        android:layout_marginTop="34dp"
+        android:layout_below="@+id/button_upload"
+        android:layout_centerHorizontal="true" />
 
     <Button
         android:text="设置"
@@ -79,9 +78,18 @@
         android:layout_height="wrap_content"
         android:id="@+id/button_mysetting"
         android:onClick="settingClicked"
-        android:layout_marginTop="34dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="23dp" />
+
+    <Button
+        android:text="修改个人信息"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="31dp"
+        android:id="@+id/button_modify"
         android:layout_below="@+id/button_mystar"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:onClick="modifyClicked" />
 
 </RelativeLayout>
