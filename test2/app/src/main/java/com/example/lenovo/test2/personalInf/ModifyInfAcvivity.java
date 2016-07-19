@@ -1,7 +1,14 @@
 package com.example.lenovo.test2.personalInf;
 
 import android.app.Activity;
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
+import android.media.Image;
+import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
 import android.support.annotation.NonNull;
 import android.util.Log;
 import android.view.View;
@@ -9,6 +16,7 @@ import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
+import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
@@ -72,18 +80,25 @@ public class ModifyInfAcvivity extends Activity {
         oneThread.start();
     }
 
-    String name,mail;
+    String name, mail;
     boolean sex;
-    int year, month, day;
+    String syear, smonth, sday;
 
     private boolean uploadInf() {
         /*获取输入信息*/
         name = ((AutoCompleteTextView) findViewById(R.id.r_name)).getText().toString();
         mail = ((AutoCompleteTextView) findViewById(R.id.mail_name)).getText().toString();
         sex = ((RadioButton) findViewById(R.id.radioButton)).isSelected();
-        year = Integer.parseInt(((EditText) findViewById(R.id.editText)).getText().toString());
-        month = Integer.parseInt(((EditText) findViewById(R.id.editText2)).getText().toString());
-        day = Integer.parseInt(((EditText) findViewById(R.id.editText7)).getText().toString());
+        syear = ((EditText) findViewById(R.id.editText)).getText().toString();
+        smonth = ((EditText) findViewById(R.id.editText2)).getText().toString();
+        sday = ((EditText) findViewById(R.id.editText7)).getText().toString();
+        if (syear.equals("") || smonth.equals("") || sday.equals("") || name.equals("") || mail.equals("")) {
+            Toast.makeText(getApplicationContext(), "请补全信息！", Toast.LENGTH_SHORT);
+            return false;
+        }
+        int year = Integer.parseInt(syear);
+        int month = Integer.parseInt(smonth);
+        int day = Integer.parseInt(sday);
         /*开始HTTP请求*/
         String url = "123.206.64.143/user_update";
 //        //建立HTTP POST连线
@@ -104,23 +119,23 @@ public class ModifyInfAcvivity extends Activity {
         StringRequest stringRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
             @Override
             public void onResponse(String s) {
-                Log.v("ModifyInfActivity",s);
+                Log.v("ModifyInfActivity", s);
             }
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError volleyError) {
-                Log.v("ModifyInfActivity",volleyError.toString());
+                Log.v("ModifyInfActivity", volleyError.toString());
             }
-        }){
+        }) {
             @Override
-            protected Map<String,String> getParams() throws AuthFailureError{
-                Map<String,String> map = new HashMap<String,String>();
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> map = new HashMap<String, String>();
                 map.put("deviceid", deviceId);
                 map.put("name", name);
                 map.put("phone", phone);
                 map.put("mail", mail);
-                map.put("birthday", year+"-"+month+"-"+day);
-                map.put("ssex",sex?"男":"女");
+                map.put("birthday", syear + "-" + smonth + "-" + sday);
+                map.put("ssex", sex ? "男" : "女");
                 return map;
             }
         };
@@ -131,4 +146,23 @@ public class ModifyInfAcvivity extends Activity {
         //params.add(new BasicNameValuePair("img", name));
         return true;
     }
+
+    public void onClickProfile(View v) {
+//        Intent intent = new Intent(Intent.ACTION_PICK);
+        String state = Environment.getExternalStorageState();
+        Intent getImageByCamera;
+        if (state.equals(Environment.MEDIA_MOUNTED)) {
+            getImageByCamera = new Intent("android.media.action.IMAGE_CAPTURE");
+            startActivityForResult(getImageByCamera, 1);
+        } else {
+            Toast.makeText(getApplicationContext(), "请确认已经插入SD卡", Toast.LENGTH_LONG).show();
+            return;
+        }
+        //获取拍摄的图片
+        Uri uri = getImageByCamera.getData();
+        Bitmap bitmap = BitmapFactory.decodeFile(uri.getPath());
+        Button button = (Button) findViewById(R.id.button3);
+        button.setBackground(new BitmapDrawable(bitmap));
+    }
+
 }
