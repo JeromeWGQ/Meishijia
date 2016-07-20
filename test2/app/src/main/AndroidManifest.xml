@@ -55,6 +55,7 @@
         </activity>
         <activity android:name=".personalInf.ModifyInfAcvivity" />
         <activity android:name=".personalInf.PhotoActivity" />
+        <activity android:name=".near.FujinActivity"></activity>
     </application>
 
 </manifest>

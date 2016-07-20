@@ -18,6 +18,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.lenovo.test2.near.FujinActivity;
 import com.example.lenovo.test2.quanquan.QuanFragment;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -91,7 +92,7 @@ public class TabActivity extends FragmentActivity implements QuanFragment.OnFrag
     FragmentTransaction fragmentTransaction;
 
     private void showActivityMap(){
-        Intent intent = new Intent(this,MapActivity.class);
+        Intent intent = new Intent(this,FujinActivity.class);
         startActivity(intent);
     }
 
@@ -285,14 +286,23 @@ public class TabActivity extends FragmentActivity implements QuanFragment.OnFrag
     }
 
     private void hideAllFragment(FragmentTransaction fragmentTransaction){
-        if(fg1 != null)
-            fragmentTransaction.hide(fg1);
+//        private MyFragment fg1,fg2,fgLogined;
+//        private QuanFragment fg4;
+//        private Fragment fg3;
+//        private firstFragment fgfirst;
+//        private FragmentManager fManager;
+//        if(fg1 != null)
+//            fragmentTransaction.hide(fg1);
         if(fg2 != null)
             fragmentTransaction.hide(fg2);
-        if(fg3 != null)
-            fragmentTransaction.hide(fg3);
+        if(fgLogined != null)
+            fragmentTransaction.hide(fgLogined);
         if(fg4 != null)
             fragmentTransaction.hide(fg4);
+        if(fg3 != null)
+            fragmentTransaction.hide(fg3);
+        if(fgfirst!= null)
+            fragmentTransaction.hide(fgfirst);
     }
 
     private void parseJsonWithGson(String jsonData){
