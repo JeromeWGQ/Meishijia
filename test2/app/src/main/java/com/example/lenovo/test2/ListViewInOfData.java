@@ -123,20 +123,20 @@ public class ListViewInOfData {
         quan.setAuthor_img(String.valueOf(R.mipmap.touxiang0));
         quan.setContent_img(String.valueOf(R.mipmap.content0));
         quan.setAuthor_name("江宝宝");
-        quan.setContent("我最好看");
+        quan.setContent("我好看");
         arrayListQuan.add(quan);
 
         quan = new quan();
         quan.setAuthor_img(String.valueOf(R.mipmap.touxiang1));
         quan.setContent_img(String.valueOf(R.mipmap.content1));
-        quan.setAuthor_name("江宝宝");
-        quan.setContent("我最好看");
+        quan.setAuthor_name("国桥");
+        quan.setContent("我更好看");
         arrayListQuan.add(quan);
 
         quan = new quan();
         quan.setAuthor_img(String.valueOf(R.mipmap.touxiang2));
         quan.setContent_img(String.valueOf(R.mipmap.content2));
-        quan.setAuthor_name("江宝宝");
+        quan.setAuthor_name("小雪花");
         quan.setContent("我最好看");
         arrayListQuan.add(quan);
 

@@ -39,4 +39,5 @@ dependencies {
     compile 'com.android.support.constraint:constraint-layout:1.0.0-alpha3'
     compile 'com.android.support:support-vector-drawable:24.0.0'
     testCompile 'junit:junit:4.12'
+    compile files('libs/log4j.jar')
 }
