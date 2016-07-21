@@ -15,10 +15,16 @@
         android:layout_height="wrap_content"
         android:id="@+id/textView4"
         android:textSize="24sp"
-        android:layout_marginTop="7dp"
+        android:layout_marginTop="12dp"
         android:layout_weight="1"
-        android:layout_marginStart="18dp"
+        android:layout_marginStart="30dp"
         android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true" />
+
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/imageButton"
         android:layout_alignParentStart="true" />
 
     <ImageButton
@@ -31,15 +37,8 @@
         android:scaleType="centerInside"
         android:layout_weight="1"
         android:onClick="showMap"
-        android:layout_marginEnd="8dp"
+        android:layout_marginEnd="12dp"
         android:layout_alignTop="@+id/textView4"
         android:layout_alignParentEnd="true" />
-
-    <ListView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@+id/imageButton"
-        android:layout_alignParentStart="true"
-        android:id="@+id/fujin_listview" />
 
 </RelativeLayout>
