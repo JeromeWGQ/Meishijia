@@ -6,13 +6,24 @@ package com.example.lenovo.test2;
 public class menu {
     String id;
     String name;
-
-
     String img;
     double price;
-    resource res;
+//    resource res;
     String discription;
-    String author;
+    String type;
+    Double score;
+    Double del;
+
+    public menu(String id, String name, String img, double price, String discription, String type, Double score, Double del) {
+        this.id = id;
+        this.name = name;
+        this.img = img;
+        this.price = price;
+        this.discription = discription;
+        this.type = type;
+        this.score = score;
+        this.del = del;
+    }
 
     public String getImg() {
         return img;
@@ -23,13 +34,38 @@ public class menu {
     }
 
 
-    public String getAuthor() {
-        return author;
+//    public String getAuthor() {
+//        return author;
+
+    public String getType() {
+        return type;
     }
 
-    public void setAuthor(String author) {
-        this.author = author;
+    public void setType(String type) {
+        this.type = type;
     }
+
+    public Double getScore() {
+        return score;
+    }
+
+    public void setScore(Double score) {
+        this.score = score;
+    }
+
+    public Double getDel() {
+        return del;
+    }
+
+    public void setDel(Double del) {
+        this.del = del;
+    }
+
+//    }
+//
+//    public void setAuthor(String author) {
+//        this.author = author;
+//    }
 
     public void setId(String id) {
         this.id = id;
@@ -55,13 +91,13 @@ public class menu {
         return price;
     }
 
-    public void setRes(resource res) {
-        this.res = res;
-    }
-
-    public resource getRes() {
-        return res;
-    }
+//    public void setRes(resource res) {
+//        this.res = res;
+//    }
+//
+//    public resource getRes() {
+//        return res;
+//    }
 
     public void setDiscription(String discription) {
         this.discription = discription;

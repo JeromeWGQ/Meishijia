@@ -5,6 +5,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.media.Image;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.view.menu.MenuView;
@@ -14,6 +16,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListAdapter;
 import android.widget.ListView;
@@ -21,6 +25,8 @@ import android.widget.ListView;
 import java.nio.channels.ClosedSelectorException;
 import java.util.ArrayList;
 import java.util.zip.Inflater;
+
+import static com.example.lenovo.test2.ListViewInOfData.parseJsonWithGson;
 
 /**
  * Created by lenovo on 2016/7/13.
@@ -30,6 +36,13 @@ public class firstFragment extends Fragment {
     ViewPager mViewPager;
     ImageView mImageView0,mImageView1,mImageView2;
     ListView mlistView;
+    private EditText search_text;
+
+    String device_id = null;
+    String params = null;
+    int page = 1;
+    int amount = 2;
+    String address = "http://172.25.132.12:8088/menu";
     public static firstFragment newInstance() {
 
         Bundle args = new Bundle();
@@ -41,7 +54,13 @@ public class firstFragment extends Fragment {
     public firstFragment(){}
 
 
-
+//    private Handler handler = new Handler(){
+//        @Override
+//        public void handleMessage(Message msg) {
+//            super.handleMessage(msg);
+//
+//        }
+//    }
     @Override
     public View onCreateView(LayoutInflater inflater, final ViewGroup container, Bundle saveInstanceState){
         view = inflater.inflate(R.layout.firstfragment,container,false);
@@ -49,6 +68,15 @@ public class firstFragment extends Fragment {
         mImageView0 = (ImageView) view.findViewById(R.id.viewpager_0);
         mImageView1 = (ImageView) view.findViewById(R.id.viewpager_1);
         mImageView2 = (ImageView) view.findViewById(R.id.viewpager_2);
+        device_id = Installation.id(getActivity());
+        search_text = (EditText) view.findViewById(R.id.mainactivity_title_edit);
+        search_text.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(container.getContext(),SearchActivity.class);
+                startActivity(intent);
+            }
+        });
 
         ArrayList<View> data = new ArrayList<View>();
         setArraylistView(data, container);
@@ -59,16 +87,36 @@ public class firstFragment extends Fragment {
         ViewPagerOnChangeListener();
 
         mlistView = (ListView) view.findViewById(R.id.you_like_listview);
-        TabOneListViewBaseAdapter listAdapter = new TabOneListViewBaseAdapter(getActivity());
-        mlistView.setAdapter(listAdapter);
+        final TabOneListViewBaseAdapter listAdapter = new TabOneListViewBaseAdapter(getActivity());
+
         ListViewInOfData listData = new ListViewInOfData();
-        listAdapter.setListData(listData.getArrayListViewInfo());
+//        ArrayList<menu> testList = new ArrayList<menu>();
+//        listData.getArrayListViewInfo(device_id,testList);
+        mlistView.setAdapter(listAdapter);
+        listData.getArrayListViewInfo(device_id,new HttpCallBackListener() {
+            @Override
+            public void Finish(String response) {
+                ArrayList<menu> testList = parseJsonWithGson(response,0);
+                listAdapter.setListData(testList);
+               listAdapter.notifyDataSetChanged();
+//                Message msg = new Message();
+//                msg.what = 1;
+//                Bundle bundle = new Bundle();
+//                bundle.a
+            }
+
+            @Override
+            public void OnError(Exception e) {
+
+            }
+        });
         setListViewHeightBasedOnChildren(mlistView);
 
         //listview点击事件
         mlistView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                DetailActivity.currentId = i;
                 Intent intent = new Intent(container.getContext(),DetailActivity.class);
                 startActivity(intent);
             }
@@ -124,7 +172,6 @@ public class firstFragment extends Fragment {
                     default:
                         break;
                 }
-
             }
 
             @Override
@@ -134,44 +181,21 @@ public class firstFragment extends Fragment {
         });
     }
 
-    public void setArraylistView(ArrayList<View> data,ViewGroup container) {
+
+    public void setArraylistView(ArrayList<View> data, final ViewGroup container) {
         View v0 = LayoutInflater.from(container.getContext()).inflate(R.layout.item0, null);
+        v0.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                DetailActivity.currentId = 0;
+                Intent intent = new Intent(container.getContext(),DetailActivity.class);
+                startActivity(intent);
+            }
+        });
         data.add(v0);
         View v1 = LayoutInflater.from(container.getContext()).inflate(R.layout.item1,null);
         data.add(v1);
         View v2 = LayoutInflater.from(container.getContext()).inflate(R.layout.item2,null);
         data.add(v2);
-    }
-    public class ViewPagerBaseAdapter extends PagerAdapter{
-        ArrayList<View> data = new ArrayList<View>();
-
-        public void setData(ArrayList<View> data){
-            this.data = data;
-            notifyDataSetChanged();
-        }
-        @Override
-        public int getCount(){
-            return data.size();
-        }
-        @Override
-        public boolean isViewFromObject(View arg0, Object arg1) {
-
-            return arg0 == arg1;
-        }
-        @Override
-        public Object instantiateItem(ViewGroup container, int position) {
-            View v = data.get(position);
-            container.addView(v);
-            Log.v("tag", "instantiateItem position " + position);
-
-            return v;
-        }
-
-        @Override
-        public void destroyItem(ViewGroup container, int position, Object object) {
-            View v = data.get(position);
-            container.removeView(v);// 这里是remove而不是add方法，否则加载最后一页之后会出现非法描述异常java.lang.IllegalStateException
-            Log.v("tag", "destroyItem position " + position);
-        }
     }
 }

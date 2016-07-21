@@ -12,108 +12,133 @@
         android:layout_height="match_parent">
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_gravity="center">
-            <TextView
-                android:id="@+id/intro"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="@dimen/text_margin"
-                android:text="@string/large_text" />
-
-
-            <LinearLayout
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <android.support.design.widget.TabLayout
+                android:id="@+id/tab_viewpager"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
-                <TextView
-                    android:id="@+id/icon_ingredient"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1.7"
-                    android:background="@mipmap/ic_category_new_for_map"
-                    />
-
-                <TextView
-                    android:id="@+id/ingredient"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text=" 食材清单"
-                    android:textSize="20dp"
-                    android:textColor="@color/text_gray" />
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1" />
-            </LinearLayout>
-
-            <TableLayout
-                android:id="@+id/tableLayout"
+                app:tabIndicatorColor="@color/text_yellow"
+                app:tabSelectedTextColor="@color/text_yellow"
+                app:tabTextColor="@color/bg_black"/>
+            <android.support.v4.view.ViewPager
+                android:id="@+id/top_viewPager"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:stretchColumns="*">
-                <TableRow>
-                    <TextView
-                        android:text="食材"
-                        android:textStyle="bold"
-                        android:background="@color/div_white"
-                        android:textAlignment="center"
-                        android:textSize="15dp"/>
-                    <TextView
-                        android:text="数量"
-                        android:textStyle="bold"
-                        android:background="@color/div_white"
-                        android:textAlignment="center"
-                        android:textSize="15dp"/>
-                </TableRow>
-            </TableLayout>
+                android:layout_height="match_parent"
+                android:layout_gravity="center"/>
+            <!--<fragment-->
+                <!--android:id="@+id/detailcontainer_frame"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="match_parent"-->
+                <!--android:layout_gravity="center_horizontal|top"-->
+                <!--android:layout_below="@id/top_viewPager"/>-->
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text=""/>
-            <LinearLayout
-                android:id="@+id/step_linearLayout"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-                <TextView
-                    android:id="@+id/icon_step"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1.7"
-                    android:background="@mipmap/ic_category_food_for_map"
-                    />
+            <!--<LinearLayout-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:orientation="vertical"-->
+            <!--android:layout_gravity="center">-->
+            <!--<TextView-->
+            <!--android:id="@+id/intro"-->
+            <!--android:layout_width="fill_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_margin="@dimen/text_margin"-->
+            <!--android:text="@string/large_text" />-->
 
-                <TextView
-                    android:id="@+id/step"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text=" 做法步骤"
-                    android:textSize="20dp"
-                    android:textColor="@color/text_gray" />
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1" />
-            </LinearLayout>
-            <ListView
-                android:id="@+id/step_detail"
-                android:layout_width="wrap_content"
-                android:layout_height="fill_parent"
 
-                android:layout_below="@id/step_linearLayout"
-                android:layout_marginLeft="5dp"
-                android:layout_marginRight="5dp"
-                android:divider="#F4F0F4"
-                android:dividerHeight="8dp"
-                android:background="@color/bg_white">
-                android:layout_height="1535dp"
-            </ListView>
+            <!--<LinearLayout-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:orientation="horizontal">-->
+            <!--<TextView-->
+            <!--android:id="@+id/icon_ingredient"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_weight="1.7"-->
+            <!--android:background="@mipmap/ic_category_new_for_map"-->
+            <!--/>-->
+
+            <!--<TextView-->
+            <!--android:id="@+id/ingredient"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_weight="1"-->
+            <!--android:text=" 食材清单"-->
+            <!--android:textSize="20dp"-->
+            <!--android:textColor="@color/text_gray" />-->
+            <!--<TextView-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_weight="1" />-->
+            <!--</LinearLayout>-->
+
+            <!--<TableLayout-->
+            <!--android:id="@+id/tableLayout"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:stretchColumns="*">-->
+            <!--<TableRow>-->
+            <!--<TextView-->
+            <!--android:text="食材"-->
+            <!--android:textStyle="bold"-->
+            <!--android:background="@color/div_white"-->
+            <!--android:textAlignment="center"-->
+            <!--android:textSize="15dp"/>-->
+            <!--<TextView-->
+            <!--android:text="数量"-->
+            <!--android:textStyle="bold"-->
+            <!--android:background="@color/div_white"-->
+            <!--android:textAlignment="center"-->
+            <!--android:textSize="15dp"/>-->
+            <!--</TableRow>-->
+            <!--</TableLayout>-->
+
+            <!--<TextView-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:text=""/>-->
+            <!--<LinearLayout-->
+            <!--android:id="@+id/step_linearLayout"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:orientation="horizontal">-->
+            <!--<TextView-->
+            <!--android:id="@+id/icon_step"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_weight="1.7"-->
+            <!--android:background="@mipmap/ic_category_food_for_map"-->
+            <!--/>-->
+
+            <!--<TextView-->
+            <!--android:id="@+id/step"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_weight="1"-->
+            <!--android:text=" 做法步骤"-->
+            <!--android:textSize="20dp"-->
+            <!--android:textColor="@color/text_gray" />-->
+            <!--<TextView-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_weight="1" />-->
+            <!--</LinearLayout>-->
+            <!--<ListView-->
+            <!--android:id="@+id/step_detail"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="fill_parent"-->
+
+            <!--android:layout_below="@id/step_linearLayout"-->
+            <!--android:layout_marginLeft="5dp"-->
+            <!--android:layout_marginRight="5dp"-->
+            <!--android:divider="#F4F0F4"-->
+            <!--android:dividerHeight="8dp"-->
+            <!--android:background="@color/bg_white">-->
+            <!--android:layout_height="1535dp"-->
+            <!--</ListView>-->
+            <!--</LinearLayout>-->
         </LinearLayout>
+
     </ScrollView>
 
 </android.support.v4.widget.NestedScrollView>

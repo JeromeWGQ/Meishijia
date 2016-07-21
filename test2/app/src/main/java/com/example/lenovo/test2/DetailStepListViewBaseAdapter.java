@@ -42,20 +42,24 @@ public class DetailStepListViewBaseAdapter extends BaseAdapter {
         if(convertView == null){
             view = inflater.inflate(R.layout.content_detail_listview_item_layout,null);
             viewHolder = new ViewHolder();
-            viewHolder.imageView = (ImageView) view.findViewById(R.id.step_detail_one_listview_image);
-            viewHolder.desc = (TextView) view.findViewById(R.id.step_detail_desc);
+            viewHolder.imageTouxiang = (ImageView) view.findViewById(R.id.evaluate_touxiang);
+            viewHolder.name = (TextView) view.findViewById(R.id.evaluate_name);
+            viewHolder.evaluateContent = (TextView) view.findViewById(R.id.evaluate_content);
             view.setTag(viewHolder);
         }else{
             view = convertView;
             viewHolder = (ViewHolder) view.getTag();
         }
-        stepDetail step_list = (stepDetail) getItem(position);
-        viewHolder.imageView.setBackgroundResource(Integer.parseInt(step_list.getImage()));
-        viewHolder.desc.setText(step_list.getStepDesc());
+        evaluate evaluate_list  = (evaluate) getItem(position);
+        viewHolder.imageTouxiang.setBackgroundResource(Integer.parseInt(evaluate_list.getImg()));
+        viewHolder.name.setText(evaluate_list.getName());
+        viewHolder.evaluateContent.setText(evaluate_list.getEvaluation());
         return view;
     }
         class ViewHolder{
-            ImageView imageView;
-            TextView desc;
+            ImageView imageTouxiang;
+            TextView name;
+            TextView evaluateContent;
+
         }
 }

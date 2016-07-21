@@ -18,9 +18,9 @@ public class Login2Activity extends AppCompatActivity {
     Button login;
     Button register;
     String params = null;
-    String address = "http://123.206.64.143/login";
+//    String address = "http://123.206.64.143/login";
     int return_value = 0;
-//    String address = "http://172.25.130.248:8088/login";
+    String address = "http://172.25.129.45:8088/login";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -72,7 +72,7 @@ public class Login2Activity extends AppCompatActivity {
             return return_value;
         }
         else{
-            params = "device_id=" + device_id + "&id=" + account +"&password=" + MD5Util.getMD5String(password);
+            params = "deviceId=" + device_id + "&phone=" + account +"&password=" + MD5Util.getMD5String(password);
             HttpUtil.sendHttpRequest(params, address, new HttpCallBackListener() {
                 @Override
                 public void Finish(String response) {

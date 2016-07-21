@@ -33,8 +33,7 @@ public class TabActivity extends FragmentActivity implements QuanFragment.OnFrag
     private TextView txt_better;
     private TextView txt_setting;
     private FrameLayout ly_content;
-    private EditText search_text;
-    private Button search_button;
+
     private String params;
     private String address;
     String device_id = null ;
@@ -46,6 +45,7 @@ public class TabActivity extends FragmentActivity implements QuanFragment.OnFrag
     private Fragment fg3;
     private firstFragment fgfirst;
     private FragmentManager fManager;
+    FragmentTransaction fragmentTransaction;
 
     public void OnFragmentInteractionListener(){
 
@@ -87,8 +87,6 @@ public class TabActivity extends FragmentActivity implements QuanFragment.OnFrag
 
         fragmentTransaction.commit();
     }
-
-    FragmentTransaction fragmentTransaction;
 
     private void showActivityMap(){
         Intent intent = new Intent(this,MapActivity.class);
@@ -209,8 +207,7 @@ public class TabActivity extends FragmentActivity implements QuanFragment.OnFrag
             }
         });
         device_id = Installation.id(this);
-        search_text = (EditText) findViewById(R.id.mainactivity_title_edit);
-        search_button = (Button) findViewById(R.id.search_button);
+
 //        search_button.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View view) {

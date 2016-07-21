@@ -16,6 +16,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Objects;
 
 /**
@@ -65,22 +66,14 @@ public class TabOneListViewBaseAdapter extends BaseAdapter {
             view = convertView;
             viewHolder = (ViewHolder) view.getTag();
         }
-        menu menu_list = (menu) getItem(position);
+
+        menu menu_list = (HashMap<>) getItem(position);
         viewHolder.imageView.setBackgroundResource(Integer.parseInt(menu_list.getImg()));
         viewHolder.title.setText(menu_list.getName());
-        viewHolder.author.setText(menu_list.getAuthor());
+        viewHolder.author.setText(menu_list.getType());
         return view;
     }
 
-    //    protected static Bitmap getLoacalBitmap(String url) {
-//        try {
-//            FileInputStream fis = new FileInputStream(url);
-//            return BitmapFactory.decodeStream(fis);
-//        } catch (FileNotFoundException e) {
-//            e.printStackTrace();
-//            return null;
-//        }
-//    }
     class ViewHolder {
         ImageView imageView;
         TextView title;

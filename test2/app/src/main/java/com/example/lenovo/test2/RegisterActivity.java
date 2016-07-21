@@ -12,10 +12,12 @@ import android.widget.Toast;
 public class RegisterActivity extends AppCompatActivity {
     String device_id = null;
     EditText r_name = null;
+    EditText r_account = null;
     EditText r_password = null;
     EditText confirm_password = null;
     String params = null;
-    String address = "http://123.206.64.143/register";
+//    String address = "http://123.206.64.143/register";
+    String address = "http://172.25.129.45:8088/user_register";
     int return_value = 0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,6 +26,7 @@ public class RegisterActivity extends AppCompatActivity {
 
         device_id = Installation.id(this);
         r_name = (EditText) findViewById(R.id.r_name);
+        r_account = (EditText) findViewById(R.id.r_account);
         r_password = (EditText) findViewById(R.id.r_password);
         confirm_password = (EditText) findViewById(R.id.confirm_password);
 
@@ -40,16 +43,22 @@ public class RegisterActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 String name = r_name.getText().toString();
+                String account = r_account.getText().toString();
                 String password = r_password.getText().toString();
                 String con_password = confirm_password.getText().toString();
 
-                int value = attemptRegister(name,password,con_password);
+                int value = attemptRegister(name,account,password,con_password);
                 switch (value){
                     case 0:
                         r_name.setText("");
+                        r_account.setText("");
                         r_password.setText("");
                         confirm_password.setText("");
                         Toast.makeText(RegisterActivity.this,"请重新输入",Toast.LENGTH_LONG).show();
+                        break;
+                    case 2:
+                        r_account.setText("");
+                        Toast.makeText(RegisterActivity.this,"请输入11位数字号码",Toast.LENGTH_LONG).show();
                         break;
                     case 3:
                         confirm_password.setText("");
@@ -62,15 +71,18 @@ public class RegisterActivity extends AppCompatActivity {
         });
     }
 
-    private int attemptRegister(String name,String password,String con_password){
-        if(name == null || password == null || con_password == null){
+    private int attemptRegister(String name,String account,String password,String con_password){
+        if(name == null || account == null || password == null || con_password == null){
             return_value = 0;
         }
-        else if(!password.equals(con_password)){
+         else if(!password.equals(con_password)){
             return_value = 3;
         }
+        else if(account.length() != 11){
+            return_value = 2;
+        }
         else{
-            params = "device_id=" + device_id + "&name=" + name + "&password=" + MD5Util.getMD5String(password);
+            params = "deviceId=" + device_id + "&name=" + name + "&phone=" + account + "&password=" + MD5Util.getMD5String(password);
             HttpUtil.sendHttpRequest(params, address, new HttpCallBackListener() {
                 @Override
                 public void Finish(String response) {
@@ -93,7 +105,7 @@ public class RegisterActivity extends AppCompatActivity {
 
                 @Override
                 public void OnError(Exception e) {
-
+                    Log.d("RegisterActivity","OnError");
                 }
             });
         }

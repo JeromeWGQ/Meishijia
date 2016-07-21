@@ -6,7 +6,7 @@ package com.example.lenovo.test2;
 public class resource {
     String id;
     String name;
-    String place;
+    String img;
     String nutrition_value;
 
     public void setId(String id){
@@ -21,11 +21,11 @@ public class resource {
     public String getName(){
         return name;
     }
-    public void setPlace(String place){
-        this.place = place;
+    public void setImg(String img){
+        this.img = img;
     }
-    public String getPlace(){
-        return place;
+    public String getImg(){
+        return img;
     }
     public void setNutrition(String nutrition){
         this.nutrition_value = nutrition;
